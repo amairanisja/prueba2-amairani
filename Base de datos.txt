@@ -1,0 +1,19 @@
+create table pueblo(estado varchar(200), nombreP varchar(200), descripcion varchar(200), actividades varchar(200), url blob);
+alter table pueblo add primary key (nombreP);
+
+create table usuario(usu varchar(200), contra varchar(200), nombreU varchar(200), apellidoP
+	varchar (200), apellidoM varchar(200), rol int);
+alter table usuario add primary key (usu);
+
+create table favoritos(usu varchar(200), nombreP varchar(200));
+alter table favorito(usu varchar (200), nombreP varchar(200));
+
+
+create table comentario(usu varchar(200), nombreP varchar(200),com blob, img blob, statusImg 	int );
+alter table comentario(usu varchar (200), nombreP varchar(200));
+
+alter table favoritos add foreign key (usu) references usuario (usu);
+alter table favoritos add foreign key (nombreP) references pueblo(nombreP);
+
+alter table comentario add foreign key (usu) references usuario (usu);
+alter table comentario add foreign key (nombreP) references pueblo(nombreP);
